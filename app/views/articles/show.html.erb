@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @article.title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @article.body %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @article.status %>
+</p>
+
+<%= link_to 'Edit', edit_article_path(@article) %> |
+<%= link_to 'Back', articles_path %>
+
+<h1> New Comment</h1>
+
+<%= form_for [@commentable, Comment.new] do |f| %>
+<%= f.label :body %>
+<%= f.text_area :body, placeholder: "Add a comment" %>
+<%= f.submit "Add Comment" %>
+<% end %>
+
+<h1>Comments</h1>
+
+<div class="comment">
+  <%= render(partial: 'comments/comment', collection: @article.comments.order("comments.id DESC")) %>
+</ul>
