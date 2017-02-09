@@ -1,0 +1,12 @@
+
+  <%= comment.body %> 
+
+  <%= form_for [comment, Comment.new] do |f| %>
+      <%= f.label :body %>
+      <%= f.text_area :body, placeholder: "Add a Reply" %>
+      <%= f.submit "Reply"  %>
+      <% end %>
+
+<div class="comment">
+    <%= render partial: 'comments/comment', collection: comment.comments.order("comments.id DESC") %>
+</div>
